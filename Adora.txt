@@ -1,1 +1,105 @@
-dmxlc3M6Ly9jZGU5ZTMzNy04NmI4LTRjMzYtOGM1Yi1iZTVhMjkxNmI3MjRAYmo2eTB1azI3bm15eTBqemN5aGpnMzhhN2Q3dTBwYWsuYXJpeWEtaGFzYW56YWRlaDg4LndvcmtlcnMuZGV2OjQ0Mz9lbmNyeXB0aW9uPW5vbmUmaG9zdD1iajZ5MHVrMjdubXl5MGp6Y3loamczOGE3ZDd1MHBhay5hcml5YS1oYXNhbnphZGVoODgud29ya2Vycy5kZXYmdHlwZT13cyZzZWN1cml0eT10bHMmcGF0aD0lMkZleUpxZFc1cklqb2lWRzFrVkdGV01sSkJJaXdpY0hKdmRHOWpiMndpT2lKMmJDSXNJbTF2WkdVaU9pSndjbTk0ZVdsd0lpd2ljR0Z1Wld4SlVITWlPbHNpTVRNMExqSXdPUzR4TXpZdU1UazNJbDE5JTNGZWQlM0QyNTYwJnNuaT1CSjZZMHVrMjduTVlZMEpaQ3loSkczOEE3ZDd1MHBBay5BUml5YS1oQXNBTnpBRGVoODguV29ya2Vycy5kRVYmZnA9Y2hyb21lJmFscG49aHR0cCUyRjEuMSMlRjAlOUYlOEMlQkIlMjAtJTIwQWRvcmElMjAtJTIwMQp2bGVzczovL2NkZTllMzM3LTg2YjgtNGMzNi04YzViLWJlNWEyOTE2YjcyNEB3d3cuc3BlZWR0ZXN0Lm5ldDo0NDM/ZW5jcnlwdGlvbj1ub25lJmhvc3Q9Ymo2eTB1azI3bm15eTBqemN5aGpnMzhhN2Q3dTBwYWsuYXJpeWEtaGFzYW56YWRlaDg4LndvcmtlcnMuZGV2JnR5cGU9d3Mmc2VjdXJpdHk9dGxzJnBhdGg9JTJGZXlKcWRXNXJJam9pVlhZNVlYaFNSbFY0ZUV4aklpd2ljSEp2ZEc5amIyd2lPaUoyYkNJc0ltMXZaR1VpT2lKd2NtOTRlV2x3SWl3aWNHRnVaV3hKVUhNaU9sc2lNVE0wTGpJd09TNHhNell1TVRrM0lsMTklM0ZlZCUzRDI1NjAmc25pPUJKNlkwdUsyN25NWVkwalpjeUhqZzM4QTdkN3UwcEFrLkFySXlBLUhBU0FOWkFkRUg4OC5XT1JLZVJzLmRFdiZmcD1jaHJvbWUmYWxwbj1odHRwJTJGMS4xIyVGMCU5RiU4QyVCQiUyMC0lMjBBZG9yYSUyMC0lMjAyCnZsZXNzOi8vY2RlOWUzMzctODZiOC00YzM2LThjNWItYmU1YTI5MTZiNzI0QDEwNC4yMS43Ny4yMjY6NDQzP2VuY3J5cHRpb249bm9uZSZob3N0PWJqNnkwdWsyN25teXkwanpjeWhqZzM4YTdkN3UwcGFrLmFyaXlhLWhhc2FuemFkZWg4OC53b3JrZXJzLmRldiZ0eXBlPXdzJnNlY3VyaXR5PXRscyZwYXRoPSUyRmV5SnFkVzVySWpvaU4yWTNXVXg2VFhkMGFrRTFlU0lzSW5CeWIzUnZZMjlzSWpvaWRtd2lMQ0p0YjJSbElqb2ljSEp2ZUhscGNDSXNJbkJoYm1Wc1NWQnpJanBiSWpFek5DNHlNRGt1TVRNMkxqRTVOeUpkZlElM0QlM0QlM0ZlZCUzRDI1NjAmc25pPWJqNnkwVUsyN05tWXkwSnpjWWhKRzM4YTdEN1UwcEFLLkFyaVlhLUhhc2FOekFERUg4OC5Xb1JrZVJTLmRlViZmcD1jaHJvbWUmYWxwbj1odHRwJTJGMS4xIyVGMCU5RiU4QyVCQiUyMC0lMjBBZG9yYSUyMC0lMjAzCnZsZXNzOi8vY2RlOWUzMzctODZiOC00YzM2LThjNWItYmU1YTI5MTZiNzI0QDE3Mi42Ny4yMTIuMzQ6NDQzP2VuY3J5cHRpb249bm9uZSZob3N0PWJqNnkwdWsyN25teXkwanpjeWhqZzM4YTdkN3UwcGFrLmFyaXlhLWhhc2FuemFkZWg4OC53b3JrZXJzLmRldiZ0eXBlPXdzJnNlY3VyaXR5PXRscyZwYXRoPSUyRmV5SnFkVzVySWpvaWFVczNkWG96ZVhoVmNVbG9PQ0lzSW5CeWIzUnZZMjlzSWpvaWRtd2lMQ0p0YjJSbElqb2ljSEp2ZUhscGNDSXNJbkJoYm1Wc1NWQnpJanBiSWpFek5DNHlNRGt1TVRNMkxqRTVOeUpkZlElM0QlM0QlM0ZlZCUzRDI1NjAmc25pPUJKNnkwVWsyN05NWVkwSlpDWWhqZzM4YTdEN1UwcEFLLkFSaVlBLWhhU0FuekFERUg4OC53T1JLZXJzLkRlViZmcD1jaHJvbWUmYWxwbj1odHRwJTJGMS4xIyVGMCU5RiU4QyVCQiUyMC0lMjBBZG9yYSUyMC0lMjA0CnZsZXNzOi8vY2RlOWUzMzctODZiOC00YzM2LThjNWItYmU1YTI5MTZiNzI0QDEwNC4xNi4xODkuMTkzOjQ0Mz9lbmNyeXB0aW9uPW5vbmUmaG9zdD1iajZ5MHVrMjdubXl5MGp6Y3loamczOGE3ZDd1MHBhay5hcml5YS1oYXNhbnphZGVoODgud29ya2Vycy5kZXYmdHlwZT13cyZzZWN1cml0eT10bHMmcGF0aD0lMkZleUpxZFc1cklqb2lhSGhSUVhKNGRGazRJaXdpY0hKdmRHOWpiMndpT2lKMmJDSXNJbTF2WkdVaU9pSndjbTk0ZVdsd0lpd2ljR0Z1Wld4SlVITWlPbHNpTVRNMExqSXdPUzR4TXpZdU1UazNJbDE5JTNGZWQlM0QyNTYwJnNuaT1CSjZ5MHVrMjduTVlZMEpaQ3lIamczOGE3RDd1MFBBay5hcmlZQS1IYVNBbnphREVoODgud29yS2VyUy5ERXYmZnA9Y2hyb21lJmFscG49aHR0cCUyRjEuMSMlRjAlOUYlOEMlQkIlMjAtJTIwQWRvcmElMjAtJTIwNQp2bGVzczovL2NkZTllMzM3LTg2YjgtNGMzNi04YzViLWJlNWEyOTE2YjcyNEAxMDQuMTYuMjEzLjczOjQ0Mz9lbmNyeXB0aW9uPW5vbmUmaG9zdD1iajZ5MHVrMjdubXl5MGp6Y3loamczOGE3ZDd1MHBhay5hcml5YS1oYXNhbnphZGVoODgud29ya2Vycy5kZXYmdHlwZT13cyZzZWN1cml0eT10bHMmcGF0aD0lMkZleUpxZFc1cklqb2liblpwYTB0WmNEZExVM2dpTENKd2NtOTBiMk52YkNJNkluWnNJaXdpYlc5a1pTSTZJbkJ5YjNoNWFYQWlMQ0p3WVc1bGJFbFFjeUk2V3lJeE16UXVNakE1TGpFek5pNHhPVGNpWFgwJTNEJTNGZWQlM0QyNTYwJnNuaT1iSjZ5MFVrMjdObXl5MEp6Y3lISmczOGE3ZDdVMFBBay5BcklZYS1IQXNhTnphZGVIODguV29yS0Vycy5kRXYmZnA9Y2hyb21lJmFscG49aHR0cCUyRjEuMSMlRjAlOUYlOEMlQkIlMjAtJTIwQWRvcmElMjAtJTIwNgp2bGVzczovL2NkZTllMzM3LTg2YjgtNGMzNi04YzViLWJlNWEyOTE2YjcyNEAxMDQuMTguMTY3LjE4Mzo0NDM/ZW5jcnlwdGlvbj1ub25lJmhvc3Q9Ymo2eTB1azI3bm15eTBqemN5aGpnMzhhN2Q3dTBwYWsuYXJpeWEtaGFzYW56YWRlaDg4LndvcmtlcnMuZGV2JnR5cGU9d3Mmc2VjdXJpdHk9dGxzJnBhdGg9JTJGZXlKcWRXNXJJam9pWm1ST1JXTm9hRkI0YVhraUxDSndjbTkwYjJOdmJDSTZJblpzSWl3aWJXOWtaU0k2SW5CeWIzaDVhWEFpTENKd1lXNWxiRWxRY3lJNld5SXhNelF1TWpBNUxqRXpOaTR4T1RjaVhYMCUzRCUzRmVkJTNEMjU2MCZzbmk9Ymo2eTBVazI3bm15WTBqekN5aGpHMzhBN2Q3dTBQQUsuYVJJeWEtaEFTQW56QURlSDg4LndPcmtlclMuZEVWJmZwPWNocm9tZSZhbHBuPWh0dHAlMkYxLjEjJUYwJTlGJThDJUJCJTIwLSUyMEFkb3JhJTIwLSUyMDcKdmxlc3M6Ly9jZGU5ZTMzNy04NmI4LTRjMzYtOGM1Yi1iZTVhMjkxNmI3MjRAMTA0LjE3LjEwMy40NTo0NDM/ZW5jcnlwdGlvbj1ub25lJmhvc3Q9Ymo2eTB1azI3bm15eTBqemN5aGpnMzhhN2Q3dTBwYWsuYXJpeWEtaGFzYW56YWRlaDg4LndvcmtlcnMuZGV2JnR5cGU9d3Mmc2VjdXJpdHk9dGxzJnBhdGg9JTJGZXlKcWRXNXJJam9pWkdSUldFWnVUekpsZW14c0lpd2ljSEp2ZEc5amIyd2lPaUoyYkNJc0ltMXZaR1VpT2lKd2NtOTRlV2x3SWl3aWNHRnVaV3hKVUhNaU9sc2lNVE0wTGpJd09TNHhNell1TVRrM0lsMTklM0ZlZCUzRDI1NjAmc25pPWJqNlkwVUsyN25tWXkwanpjeUhKRzM4YTdEN1UwUEFrLmFSaXlBLWhhU2FOWmFkRWg4OC53b1JLRVJTLmRlViZmcD1jaHJvbWUmYWxwbj1odHRwJTJGMS4xIyVGMCU5RiU4QyVCQiUyMC0lMjBBZG9yYSUyMC0lMjA4CnZsZXNzOi8vY2RlOWUzMzctODZiOC00YzM2LThjNWItYmU1YTI5MTZiNzI0QDEwNC4xOC4xNjguMjM6NDQzP2VuY3J5cHRpb249bm9uZSZob3N0PWJqNnkwdWsyN25teXkwanpjeWhqZzM4YTdkN3UwcGFrLmFyaXlhLWhhc2FuemFkZWg4OC53b3JrZXJzLmRldiZ0eXBlPXdzJnNlY3VyaXR5PXRscyZwYXRoPSUyRmV5SnFkVzVySWpvaWVXTjFWRTAxVFdwTWFtbGliallpTENKd2NtOTBiMk52YkNJNkluWnNJaXdpYlc5a1pTSTZJbkJ5YjNoNWFYQWlMQ0p3WVc1bGJFbFFjeUk2V3lJeE16UXVNakE1TGpFek5pNHhPVGNpWFgwJTNEJTNGZWQlM0QyNTYwJnNuaT1CajZZMFVLMjduTXlZMGpaY3loamczOGE3RDd1MFBhay5hcklZYS1IQVNhblphZEVIODgud29SS0VyUy5kZVYmZnA9Y2hyb21lJmFscG49aHR0cCUyRjEuMSMlRjAlOUYlOEMlQkIlMjAtJTIwQWRvcmElMjAtJTIwOQ==
+[
+    {
+        "remarks": "🌻 - Adora",
+        "version": {
+            "min": "26.2.6"
+        },
+        "log": {
+            "loglevel": "warning"
+        },
+        "dns": {
+            "hosts": {
+                "dns.adguard-dns.com": [
+                    "94.140.15.15",
+                    "94.140.14.14"
+                ]
+            },
+            "servers": [
+                {
+                    "address": "fakedns",
+                    "domains": [
+                        "geosite:category-ir",
+                        "full:bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
+                    ],
+                    "skipFallback": false
+                },
+                {
+                    "address": "https://dns.adguard-dns.com/dns-query",
+                    "tag": "remote-dns"
+                },
+                {
+                    "address": "8.8.8.8",
+                    "domains": [
+                        "geosite:category-ir"
+                    ],
+                    "expectIPs": [
+                        "geoip:ir"
+                    ],
+                    "skipFallback": true
+                },
+                {
+                    "address": "8.8.8.8",
+                    "domains": [
+                        "full:bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
+                    ],
+                    "skipFallback": true
+                }
+            ],
+            "queryStrategy": "UseIP",
+            "tag": "dns"
+        },
+        "inbounds": [
+            {
+                "listen": "0.0.0.0",
+                "port": 10808,
+                "protocol": "mixed",
+                "settings": {
+                    "auth": "noauth",
+                    "udp": true
+                },
+                "sniffing": {
+                    "destOverride": [
+                        "http",
+                        "tls",
+                        "fakedns"
+                    ],
+                    "enabled": true,
+                    "routeOnly": true
+                },
+                "tag": "mixed-in"
+            },
+            {
+                "listen": "0.0.0.0",
+                "port": 10853,
+                "protocol": "dokodemo-door",
+                "settings": {
+                    "address": "1.1.1.1",
+                    "network": "tcp,udp",
+                    "port": 53
+                },
+                "tag": "dns-in"
+            }
+        ],
+        "outbounds": [
+            {
+                "protocol": "vless",
+                "settings": {
+                    "vnext": [
+                        {
+                            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
+                            "port": 443,
+                            "users": [
+                                {
+                                    "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
+                                    "encryption": "none"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "streamSettings": {
+                    "network": "ws",
+                    "wsSettings": {
+                        "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
+                        "path": "/eyJqdW5rIjoiM0d4TUJ1Y1JQIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTM0LjIwOS4xMzYuMTk3Il19?ed=2560"
+                    },
