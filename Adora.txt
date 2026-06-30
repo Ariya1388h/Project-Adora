@@ -96,7 +96,7 @@
     ],
     "outbounds": [
         {
-            "tag": "🌻 - Adora",
+            "tag": "❤️ - Adora 1",
             "type": "vless",
             "server": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
             "server_port": 443,
@@ -129,7 +129,7 @@
             "domain_resolver": "dns-direct"
         },
         {
-            "tag": "🌻 - Adora",
+            "tag": "🌙 - Adora 2",
             "type": "vless",
             "server": "www.speedtest.net",
             "server_port": 443,
@@ -162,7 +162,7 @@
             "domain_resolver": "dns-direct"
         },
         {
-            "tag": "🌻 - Adora",
+            "tag": "🫶 - Adora 3",
             "type": "vless",
             "server": "172.67.212.34",
             "server_port": 443,
@@ -194,7 +194,7 @@
             }
         },
         {
-            "tag": "🌻 - Adora",
+            "tag": "🌹 - Adora 4",
             "type": "vless",
             "server": "104.21.77.226",
             "server_port": 443,
@@ -226,7 +226,7 @@
             }
         },
         {
-            "tag": "🌻 - Adora",
+            "tag": "💘 - Adora 5",
             "type": "vless",
             "server": "104.16.189.193",
             "server_port": 443,
@@ -258,7 +258,7 @@
             }
         },
         {
-            "tag": "🌻 - Adora",
+            "tag": "🫂 - Adora 6",
             "type": "vless",
             "server": "104.16.213.73",
             "server_port": 443,
@@ -290,7 +290,7 @@
             }
         },
         {
-            "tag": "🌻 - Adora",
+            "tag": "❤️ - Adora 7",
             "type": "vless",
             "server": "104.18.167.183",
             "server_port": 443,
@@ -322,7 +322,7 @@
             }
         },
         {
-            "tag": "🌻 - Adora",
+            "tag": "🌙 - Adora 8",
             "type": "vless",
             "server": "104.17.103.45",
             "server_port": 443,
@@ -354,51 +354,18 @@
             }
         },
         {
-            "tag": "🌻 - Adora",
-            "type": "vless",
-            "server": "104.18.168.23",
-            "server_port": 443,
-            "tcp_fast_open": false,
-            "uuid": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-            "packet_encoding": "",
-            "network": "tcp",
-            "tls": {
-                "enabled": true,
-                "server_name": "BJ6y0Uk27NmyY0JZcyHjG38a7D7u0Pak.arIyA-hAsAnZadEH88.WOrKeRS.dev",
-                "record_fragment": false,
-                "insecure": false,
-                "alpn": [
-                    "http/1.1"
-                ],
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/eyJqdW5rIjoibmJuUnVVQlFqSCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==",
-                "max_early_data": 2560,
-                "early_data_header_name": "Sec-WebSocket-Protocol",
-                "headers": {
-                    "Host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
-                }
-            }
-        },
-        {
             "type": "selector",
             "tag": "✅ Selector",
             "outbounds": [
                 "💦 Best Ping 🚀",
-                "💦 1 - VLESS - Domain : 443",
-                "💦 2 - VLESS - Domain : 443",
-                "💦 3 - VLESS - IPv4 : 443",
-                "💦 4 - VLESS - IPv4 : 443",
-                "💦 5 - VLESS - Clean IP : 443",
-                "💦 6 - VLESS - Clean IP : 443",
-                "💦 7 - VLESS - Clean IP : 443",
-                "💦 8 - VLESS - Clean IP : 443",
-                "💦 9 - VLESS - Clean IP : 443"
+                "❤️ - Adora 1",
+                "🌙 - Adora 2",
+                "🫶 - Adora 3",
+                "🌹 - Adora 4",
+                "💘 - Adora 5",
+                "🫂 - Adora 6",
+                "❤️ - Adora 7",
+                "🌙 - Adora 8"
             ],
             "interrupt_exist_connections": false
         },
@@ -411,15 +378,14 @@
             "type": "urltest",
             "tag": "💦 Best Ping 🚀",
             "outbounds": [
-                "💦 1 - VLESS - Domain : 443",
-                "💦 2 - VLESS - Domain : 443",
-                "💦 3 - VLESS - IPv4 : 443",
-                "💦 4 - VLESS - IPv4 : 443",
-                "💦 5 - VLESS - Clean IP : 443",
-                "💦 6 - VLESS - Clean IP : 443",
-                "💦 7 - VLESS - Clean IP : 443",
-                "💦 8 - VLESS - Clean IP : 443",
-                "💦 9 - VLESS - Clean IP : 443"
+                "❤️ - Adora 1",
+                "🌙 - Adora 2",
+                "🫶 - Adora 3",
+                "🌹 - Adora 4",
+                "💘 - Adora 5",
+                "🫂 - Adora 6",
+                "❤️ - Adora 7",
+                "🌙 - Adora 8"
             ],
             "url": "https://www.gstatic.com/generate_204",
             "interrupt_exist_connections": false,
