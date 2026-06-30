@@ -129,7 +129,7 @@
             "domain_resolver": "dns-direct"
         },
         {
-            "tag": "❤️ - Adora",
+            "tag": "🌻 - Adora",
             "type": "vless",
             "server": "www.speedtest.net",
             "server_port": 443,
@@ -226,7 +226,7 @@
             }
         },
         {
-            "tag": "❤️ - Adora",
+            "tag": "🌻 - Adora",
             "type": "vless",
             "server": "104.16.189.193",
             "server_port": 443,
@@ -258,7 +258,7 @@
             }
         },
         {
-            "tag": "❤️ - Adora",
+            "tag": "🌻 - Adora",
             "type": "vless",
             "server": "104.16.213.73",
             "server_port": 443,
@@ -354,7 +354,7 @@
             }
         },
         {
-            "tag": "🫂 - Adora",
+            "tag": "🌻 - Adora",
             "type": "vless",
             "server": "104.18.168.23",
             "server_port": 443,
@@ -389,16 +389,16 @@
             "type": "selector",
             "tag": "✅ Selector",
             "outbounds": [
-                "🌻 - Adora",
-                "🌻 - Adora",
-                "❤️ - Adora",
-                "❤️ - Adora",
-                "🌻 - Adora",
-                "🌻 - Adora",
-                "❤️ - Adora",
-                "❤️ - Adora",
-                "🌻 - Adora",
-                "🌻 - Adora"
+                "💦 Best Ping 🚀",
+                "💦 1 - VLESS - Domain : 443",
+                "💦 2 - VLESS - Domain : 443",
+                "💦 3 - VLESS - IPv4 : 443",
+                "💦 4 - VLESS - IPv4 : 443",
+                "💦 5 - VLESS - Clean IP : 443",
+                "💦 6 - VLESS - Clean IP : 443",
+                "💦 7 - VLESS - Clean IP : 443",
+                "💦 8 - VLESS - Clean IP : 443",
+                "💦 9 - VLESS - Clean IP : 443"
             ],
             "interrupt_exist_connections": false
         },
@@ -409,17 +409,17 @@
         },
         {
             "type": "urltest",
-            "tag": "🌻 - Adora",
+            "tag": "💦 Best Ping 🚀",
             "outbounds": [
-                "🌻 - Adora",
-                "🌻 - Adora",
-                "❤️ - Adora",
-                "❤️ - Adora",
-                "🌻 - Adora",
-                "🌻 - Adora",
-                "❤️ - Adora",
-                "❤️ - Adora",
-                "🫂 - Adora"
+                "💦 1 - VLESS - Domain : 443",
+                "💦 2 - VLESS - Domain : 443",
+                "💦 3 - VLESS - IPv4 : 443",
+                "💦 4 - VLESS - IPv4 : 443",
+                "💦 5 - VLESS - Clean IP : 443",
+                "💦 6 - VLESS - Clean IP : 443",
+                "💦 7 - VLESS - Clean IP : 443",
+                "💦 8 - VLESS - Clean IP : 443",
+                "💦 9 - VLESS - Clean IP : 443"
             ],
             "url": "https://www.gstatic.com/generate_204",
             "interrupt_exist_connections": false,
