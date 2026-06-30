@@ -1,2145 +1,513 @@
 {
-  "remarks": "🌻 - Adora",
-  "version": {
-    "min": "26.2.6"
-  },
-  "log": {
-    "loglevel": "warning"
-  },
-  "dns": {
-    "hosts": {
-      "dns.adguard-dns.com": [
-        "94.140.15.15",
-        "94.140.14.14"
-      ]
+    "log": {
+        "disabled": false,
+        "level": "warn",
+        "timestamp": true
     },
-    "servers": [
-      {
-        "address": "fakedns",
-        "domains": [
-          "geosite:category-ir",
-          "full:bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "full:www.speedtest.net"
+    "dns": {
+        "servers": [
+            {
+                "type": "https",
+                "server": "dns.adguard-dns.com",
+                "detour": "✅ Selector",
+                "tag": "dns-remote"
+            },
+            {
+                "type": "udp",
+                "server": "8.8.8.8",
+                "tag": "dns-direct"
+            },
+            {
+                "type": "hosts",
+                "predefined": {
+                    "dns.adguard-dns.com": [
+                        "94.140.15.15",
+                        "94.140.14.14"
+                    ]
+                },
+                "tag": "hosts"
+            },
+            {
+                "type": "fakeip",
+                "inet4_range": "198.18.0.0/15",
+                "tag": "dns-fake"
+            }
         ],
-        "skipFallback": false
-      },
-      {
-        "address": "https://dns.adguard-dns.com/dns-query",
-        "tag": "remote-dns"
-      },
-      {
-        "address": "8.8.8.8",
-        "domains": [
-          "geosite:category-ir"
-        ],
-        "expectIPs": [
-          "geoip:ir"
-        ],
-        "skipFallback": true
-      },
-      {
-        "address": "8.8.8.8",
-        "domains": [
-          "full:bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "full:www.speedtest.net"
-        ],
-        "skipFallback": true
-      }
-    ],
-    "queryStrategy": "UseIP",
-    "tag": "dns"
-  },
-  "inbounds": [
-    {
-      "listen": "0.0.0.0",
-      "port": 10808,
-      "protocol": "mixed",
-      "settings": {
-        "auth": "noauth",
-        "udp": true
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "fakedns"
-        ],
-        "enabled": true,
-        "routeOnly": true
-      },
-      "tag": "mixed-in"
-    },
-    {
-      "listen": "0.0.0.0",
-      "port": 10853,
-      "protocol": "dokodemo-door",
-      "settings": {
-        "address": "1.1.1.1",
-        "network": "tcp,udp",
-        "port": 53
-      },
-      "tag": "dns-in"
-    }
-  ],
-  "outbounds": [
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoibldxV3Zyd1pxNGFoZU5xQyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bJ6y0Uk27NMYY0JzCyhJg38a7D7u0pak.ARiyA-HasANZAdeh88.wORKeRS.dEV",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        }
-      },
-      "tag": "proxy-1"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "www.speedtest.net",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiaXdJQ0owT1YiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "BJ6Y0UK27NmyY0jzCyHJG38A7D7U0PaK.aRiya-haSanzADEh88.WoRKErS.DEv",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        }
-      },
-      "tag": "proxy-2"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "104.21.77.226",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoibDV3UmdyVzNUOXFSMnUiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bJ6y0uK27NMYy0JzCYHjG38A7D7u0PaK.arIyA-HASAnzAdeh88.wORkeRs.dev",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        }
-      },
-      "tag": "proxy-3"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "172.67.212.34",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiYUZxSDZBQlRRMmUiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bJ6y0uK27Nmyy0jzcyhJG38A7D7u0PAk.ARIyA-hAsanzADeH88.WORkeRS.deV",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        }
-      },
-      "tag": "proxy-4"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "104.16.189.193",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoicEl6cmtiNDkiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "Bj6Y0UK27nmYY0JzCYhJg38a7D7U0PaK.arIYA-HaSaNZadeh88.worKers.deV",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        }
-      },
-      "tag": "proxy-5"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "104.16.213.73",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiMllDd0pnUzA0aVMiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bJ6y0uk27NmYy0jzcYHjG38a7D7U0pAk.ariYa-HaSANZADeH88.wOrKers.dEV",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        }
-      },
-      "tag": "proxy-6"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "104.18.167.183",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiaEhlNmJ5WXV1IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTM0LjIwOS4xMzYuMTk3Il19?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bj6y0uK27nMyy0jzCyhJg38a7D7u0PAk.AriyA-haSanzAdEh88.woRkErs.dEV",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        }
-      },
-      "tag": "proxy-7"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "104.17.103.45",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoib3JoOVB5WVk4c3IyOCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bj6Y0Uk27NMyY0jZcYhJg38a7D7u0pak.aRiYA-hASAnzaDeh88.wOrkeRs.dEV",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        }
-      },
-      "tag": "proxy-8"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "104.18.168.23",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiZUdWZEZxOE0zNyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bJ6y0UK27NmyY0JzcyHjG38a7d7u0pAk.AriyA-HAsAnzaDEH88.WoRkErS.Dev",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        }
-      },
-      "tag": "proxy-9"
-    },
-    {
-      "protocol": "dns",
-      "settings": {
         "rules": [
-          {
-            "action": "hijack"
-          }
-        ]
-      },
-      "tag": "dns-out"
+            {
+                "ip_accept_any": true,
+                "server": "hosts"
+            },
+            {
+                "clash_mode": "Direct",
+                "server": "dns-direct"
+            },
+            {
+                "clash_mode": "Global",
+                "server": "dns-remote"
+            },
+            {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "rule_set": [
+                            "geosite-ir"
+                        ]
+                    },
+                    {
+                        "rule_set": "geoip-ir"
+                    }
+                ],
+                "action": "route",
+                "server": "dns-direct"
+            },
+            {
+                "inbound": "tun-in",
+                "query_type": [
+                    "A",
+                    "AAAA"
+                ],
+                "action": "route",
+                "server": "dns-fake"
+            }
+        ],
+        "strategy": "ipv4_only",
+        "independent_cache": true
     },
-    {
-      "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIP"
-      },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {
-        "response": {
-          "type": "http"
+    "inbounds": [
+        {
+            "type": "tun",
+            "tag": "tun-in",
+            "address": [
+                "172.19.0.1/28"
+            ],
+            "mtu": 9000,
+            "auto_route": true,
+            "strict_route": true,
+            "stack": "mixed"
+        },
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "0.0.0.0",
+            "listen_port": 2080
         }
-      },
-      "tag": "block"
-    }
-  ],
-  "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": [
-      {
-        "inboundTag": [
-          "mixed-in"
-        ],
-        "port": 53,
-        "outboundTag": "dns-out",
-        "type": "field"
-      },
-      {
-        "inboundTag": [
-          "dns-in"
-        ],
-        "outboundTag": "dns-out",
-        "type": "field"
-      },
-      {
-        "inboundTag": [
-          "remote-dns"
-        ],
-        "balancerTag": "all-proxies",
-        "type": "field"
-      },
-      {
-        "inboundTag": [
-          "dns"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "geoip:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "network": "udp",
-        "outboundTag": "block",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:category-ir"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "geoip:ir"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "network": "tcp",
-        "balancerTag": "all-proxies",
-        "type": "field"
-      }
     ],
-    "balancers": [
-      {
-        "tag": "all-proxies",
-        "selector": [
-          "proxy"
-        ],
-        "strategy": {
-          "type": "leastPing"
+    "outbounds": [
+        {
+            "tag": "🌻 - Adora",
+            "type": "vless",
+            "server": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "Bj6Y0UK27nMYY0jZCyhJG38a7D7U0Pak.ARIya-hAsanZAdeh88.WORKErs.deV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiWkZlOFQyQWNINk52VyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
+                }
+            },
+            "domain_resolver": "dns-direct"
         },
-        "fallbackTag": "proxy-2"
-      }
-    ]
-  },
-  "observatory": {
-    "subjectSelector": [
-      "proxy"
+        {
+            "tag": "❤️ - Adora",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "BJ6Y0Uk27NMYY0jzcyhjg38a7d7U0Pak.aRIYA-hasAnzadEh88.WORkERs.dEV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoia1dKeDFVODRuWiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
+                }
+            },
+            "domain_resolver": "dns-direct"
+        },
+        {
+            "tag": "🌻 - Adora",
+            "type": "vless",
+            "server": "172.67.212.34",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "bJ6Y0Uk27NmYy0jZcYHjg38A7D7U0pak.ARiYA-hASANZAdEH88.wORkeRS.dEV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoieGNWb2l3U2QiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "🌻 - Adora",
+            "type": "vless",
+            "server": "104.21.77.226",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "bJ6Y0Uk27NmYy0JzCYhJG38A7d7U0PAK.ariyA-hasAnZadeh88.woRkeRS.DEV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiU0tkU0dXQUZMM1NHdElRIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTM0LjIwOS4xMzYuMTk3Il19",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "❤️ - Adora",
+            "type": "vless",
+            "server": "104.16.189.193",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "bj6y0uK27NmYy0jZCYhJg38a7D7u0PAk.AriyA-hASaNzaDeh88.wORkERS.DEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiQk02Z0NPZHZiV3UzTGlsYiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "❤️ - Adora",
+            "type": "vless",
+            "server": "104.16.213.73",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "Bj6Y0Uk27NmYY0jZcYHjg38A7D7u0Pak.ariYA-HAsanzADEh88.worKers.DEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiSVU3aWlrRU82WmJEUXciLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "🌻 - Adora",
+            "type": "vless",
+            "server": "104.18.167.183",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "bj6y0Uk27nMYY0JZCYhJG38a7d7u0pak.ArIYa-HaSANZadEH88.workeRS.dEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiTEV2Uko0QUpCIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTM0LjIwOS4xMzYuMTk3Il19",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "🌻 - Adora",
+            "type": "vless",
+            "server": "104.17.103.45",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "BJ6y0Uk27nMyy0JzcYHjg38a7d7u0pAK.ArIYA-HASANZaDEH88.wORKerS.DEV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiQ0NWUGhOMks0QUlYIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTM0LjIwOS4xMzYuMTk3Il19",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "🫂 - Adora",
+            "type": "vless",
+            "server": "104.18.168.23",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "BJ6y0Uk27NmyY0JZcyHjG38a7D7u0Pak.arIyA-hAsAnZadEH88.WOrKeRS.dev",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoibmJuUnVVQlFqSCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "selector",
+            "tag": "✅ Selector",
+            "outbounds": [
+                "🌻 - Adora",
+                "🌻 - Adora",
+                "❤️ - Adora",
+                "❤️ - Adora",
+                "🌻 - Adora",
+                "🌻 - Adora",
+                "❤️ - Adora",
+                "❤️ - Adora",
+                "🌻 - Adora",
+                "🌻 - Adora"
+            ],
+            "interrupt_exist_connections": false
+        },
+        {
+            "type": "direct",
+            "tag": "direct",
+            "domain_resolver": "dns-direct"
+        },
+        {
+            "type": "urltest",
+            "tag": "🌻 - Adora",
+            "outbounds": [
+                "🌻 - Adora",
+                "🌻 - Adora",
+                "❤️ - Adora",
+                "❤️ - Adora",
+                "🌻 - Adora",
+                "🌻 - Adora",
+                "❤️ - Adora",
+                "❤️ - Adora",
+                "🫂 - Adora"
+            ],
+            "url": "https://www.gstatic.com/generate_204",
+            "interrupt_exist_connections": false,
+            "interval": "50s"
+        }
     ],
-    "probeUrl": "https://www.gstatic.com/generate_204",
-    "probeInterval": "50s",
-    "enableConcurrency": true
-  },
-  "policy": {
-    "levels": {
-      "0": {
-        "connIdle": 300,
-        "handshake": 4,
-        "uplinkOnly": 1,
-        "downlinkOnly": 1
-      }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
-  },
-  "stats": {}
-},
-{
-  "remarks": "🫂 - Adora",
-  "version": {
-    "min": "26.2.6"
-  },
-  "log": {
-    "loglevel": "warning"
-  },
-  "dns": {
-    "hosts": {
-      "dns.adguard-dns.com": [
-        "94.140.15.15",
-        "94.140.14.14"
-      ],
-      "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev": [
-        "172.67.212.34",
-        "104.21.77.226",
-        "2606:4700:3033::ac43:d422",
-        "2606:4700:3035::6815:4de2"
-      ]
-    },
-    "servers": [
-      {
-        "address": "fakedns",
-        "domains": [
-          "geosite:category-ir"
-        ],
-        "skipFallback": false
-      },
-      {
-        "address": "https://dns.adguard-dns.com/dns-query",
-        "tag": "remote-dns"
-      },
-      {
-        "address": "8.8.8.8",
-        "domains": [
-          "geosite:category-ir"
-        ],
-        "expectIPs": [
-          "geoip:ir"
-        ],
-        "skipFallback": true
-      }
-    ],
-    "queryStrategy": "UseIP",
-    "tag": "dns"
-  },
-  "inbounds": [
-    {
-      "listen": "0.0.0.0",
-      "port": 10808,
-      "protocol": "mixed",
-      "settings": {
-        "auth": "noauth",
-        "udp": true
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "fakedns"
-        ],
-        "enabled": true,
-        "routeOnly": true
-      },
-      "tag": "mixed-in"
-    },
-    {
-      "listen": "0.0.0.0",
-      "port": 10853,
-      "protocol": "dokodemo-door",
-      "settings": {
-        "address": "1.1.1.1",
-        "network": "tcp,udp",
-        "port": 53
-      },
-      "tag": "dns-in"
-    }
-  ],
-  "outbounds": [
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiS2hqZU40UjhsIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTM0LjIwOS4xMzYuMTk3Il19?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "BJ6Y0UK27nMyy0JZcyhjG38a7D7U0PaK.ARiyA-HasAnZADEh88.WOrKers.dEV",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "1-5",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-1"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiZmMycU1va25XOGl3IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTM0LjIwOS4xMzYuMTk3Il19?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bJ6y0uk27NMyY0JzcyHjg38A7D7U0paK.aRIyA-HasAnZaDeH88.workERS.deV",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "1-10",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-2"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoickFpWndyWnZ1cmloQSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "BJ6Y0uk27nmYy0jzCYhjg38a7D7U0PaK.AriyA-hAsaNZAdeH88.WorkERS.dEv",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "10-20",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-3"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiOHEwRTZtOG9saTIiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "BJ6y0Uk27nMYy0JzCYHJg38a7D7u0Pak.AriYa-haSaNZaDEh88.WorkeRS.Dev",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "20-30",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-4"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoia2NoVkdUd0hJIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTM0LjIwOS4xMzYuMTk3Il19?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "BJ6Y0Uk27NMyY0jZCyHjg38a7D7U0pak.ARIyA-hASanzaDEh88.woRKers.dev",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "30-40",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-5"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiZUtRQXpJczgiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bj6Y0UK27nmYY0JZCyHJG38A7d7U0pAK.ARIya-hasaNZaDEh88.WORKErs.deV",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "40-50",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-6"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoia3NCRnhWUVVSNCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bJ6y0uk27nMYY0jzCYHjG38a7D7u0PAk.aRiYa-HASanzADEH88.WorKErS.Dev",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "50-60",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-7"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiUTdDZUNUdGkyUjJTcDFuOCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bj6Y0UK27nMyy0JzcyhJG38A7D7u0pAk.AriyA-hASaNZAdeH88.woRkeRs.DEv",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "60-70",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-8"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiOVhtYlJYS0c5ZlQiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "Bj6Y0UK27nMYy0JzCYhJG38A7d7u0PaK.ARiYA-HaSanZADeh88.woRKERs.deV",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "70-80",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-9"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiRDF6R05sRFA3V1kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "BJ6y0Uk27nMYY0JzcyhJg38A7d7u0PAK.ArIya-HASanzaDEH88.WORkErS.dEv",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "80-90",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-10"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiY3JKMWtNeDh4SkRrZGtNUCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "BJ6y0uk27nmYY0jZcYhJg38A7d7u0PAk.aRIYa-HasANZADEH88.wOrKErS.Dev",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "90-100",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-11"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiQmdMZDFndmRYMjAiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "Bj6Y0uK27Nmyy0JZcYhJg38a7d7U0PAK.ArIyA-HaSanzadEH88.WoRkers.deV",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "10-30",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-12"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoibXRPWnRMZjRLIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTM0LjIwOS4xMzYuMTk3Il19?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "Bj6y0uK27nmYy0JzcyHJg38A7d7U0Pak.ARiYA-HASaNZAdeH88.woRKERs.DEv",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "20-40",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-13"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiQzdLZnRUT3NsRiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bJ6Y0Uk27NMyy0JZcYhJg38A7D7U0PAK.ariYa-HasAnzADeh88.workeRs.DEV",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "30-50",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-14"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiVWtpWnhEWmZLbFJ2dCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bj6Y0Uk27NMYY0JzcyhJg38A7d7U0pAK.arIYA-hASanZaDEh88.wORkeRS.DEv",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "40-60",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-15"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiR3ZGdUpTQVMiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bJ6Y0UK27nMYY0JZCyHJG38A7d7U0pAk.arIyA-HAsAnzaDeh88.wOrKErS.dEV",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "50-70",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-16"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiQVVHZkJwTzIxNHdzbyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bj6Y0uK27NMYY0jZCyhJg38A7D7U0PAk.ArIYA-hAsANzAdeh88.wOrKeRS.Dev",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "60-80",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-17"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiNTE0TVlRRER5Q25NIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTM0LjIwOS4xMzYuMTk3Il19?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "BJ6Y0uk27nMYY0JzCyhJG38A7D7u0paK.ARiyA-haSanZAdeh88.WoRKERS.dev",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "70-90",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-18"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiWk1BdGZMZ0d1M1AiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMzQuMjA5LjEzNi4xOTciXX0=?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bj6y0Uk27NmyY0jzCYHJG38A7d7u0PAk.AriYa-hAsAnZaDeh88.wOrkErs.dEv",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "80-100",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-19"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiVk44SVRMVTdyQSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEzNC4yMDkuMTM2LjE5NyJdfQ==?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bj6Y0UK27NMYY0JZcYHjg38A7D7u0paK.arIYA-hASAnZADEH88.worKErS.Dev",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "100-200",
-                "delay": "1-1"
-              }
-            }
-          ]
-        }
-      },
-      "tag": "proxy-20"
-    },
-    {
-      "protocol": "dns",
-      "settings": {
+    "route": {
         "rules": [
-          {
-            "action": "hijack"
-          }
-        ]
-      },
-      "tag": "dns-out"
-    },
-    {
-      "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIP"
-      },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {
-        "response": {
-          "type": "http"
-        }
-      },
-      "tag": "block"
-    }
-  ],
-  "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": [
-      {
-        "inboundTag": [
-          "mixed-in"
-        ],
-        "port": 53,
-        "outboundTag": "dns-out",
-        "type": "field"
-      },
-      {
-        "inboundTag": [
-          "dns-in"
-        ],
-        "outboundTag": "dns-out",
-        "type": "field"
-      },
-      {
-        "inboundTag": [
-          "remote-dns"
-        ],
-        "balancerTag": "all-proxies",
-        "type": "field"
-      },
-      {
-        "inboundTag": [
-          "dns"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "geoip:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "network": "udp",
-        "outboundTag": "block",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:category-ir"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "geoip:ir"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "network": "tcp",
-        "balancerTag": "all-proxies",
-        "type": "field"
-      }
-    ],
-    "balancers": [
-      {
-        "tag": "all-proxies",
-        "selector": [
-          "proxy"
-        ],
-        "strategy": {
-          "type": "leastPing"
-        }
-      }
-    ]
-  },
-  "observatory": {
-    "subjectSelector": [
-      "proxy"
-    ],
-    "probeUrl": "https://www.gstatic.com/generate_204",
-    "probeInterval": "50s",
-    "enableConcurrency": true
-  },
-  "policy": {
-    "levels": {
-      "0": {
-        "connIdle": 300,
-        "handshake": 4,
-        "uplinkOnly": 1,
-        "downlinkOnly": 1
-      }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
-  },
-  "stats": {}
-},
-{
-  "remarks": "❤️ - Adora",
-  "version": {
-    "min": "26.2.6"
-  },
-  "log": {
-    "loglevel": "warning"
-  },
-  "dns": {
-    "hosts": {
-      "dns.adguard-dns.com": [
-        "94.140.15.15",
-        "94.140.14.14"
-      ]
-    },
-    "servers": [
-      {
-        "address": "fakedns",
-        "domains": [
-          "geosite:category-ir",
-          "full:www.speedtest.net"
-        ],
-        "skipFallback": false
-      },
-      {
-        "address": "https://dns.adguard-dns.com/dns-query",
-        "tag": "remote-dns"
-      },
-      {
-        "address": "8.8.8.8",
-        "domains": [
-          "geosite:category-ir"
-        ],
-        "expectIPs": [
-          "geoip:ir"
-        ],
-        "skipFallback": true
-      },
-      {
-        "address": "8.8.8.8",
-        "domains": [
-          "full:www.speedtest.net"
-        ],
-        "skipFallback": true
-      }
-    ],
-    "queryStrategy": "UseIP",
-    "tag": "dns"
-  },
-  "inbounds": [
-    {
-      "listen": "0.0.0.0",
-      "port": 10808,
-      "protocol": "mixed",
-      "settings": {
-        "auth": "noauth",
-        "udp": true
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls",
-          "fakedns"
-        ],
-        "enabled": true,
-        "routeOnly": true
-      },
-      "tag": "mixed-in"
-    },
-    {
-      "listen": "0.0.0.0",
-      "port": 10853,
-      "protocol": "dokodemo-door",
-      "settings": {
-        "address": "1.1.1.1",
-        "network": "tcp,udp",
-        "port": 53
-      },
-      "tag": "dns-in"
-    }
-  ],
-  "outbounds": [
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "www.speedtest.net",
-            "port": 443,
-            "users": [
-              {
-                "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-          "path": "/eyJqdW5rIjoiRlFCb0IyQ2dFTnlzbmh4IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTM0LjIwOS4xMzYuMTk3Il19?ed=2560"
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "bJ6y0uK27NMyy0jZCyhJg38A7D7u0PaK.arIYA-HASanZADEH88.woRkerS.Dev",
-          "fingerprint": "chrome",
-          "alpn": [
-            "http/1.1"
-          ]
-        },
-        "sockopt": {
-          "domainStrategy": "UseIP",
-          "happyEyeballs": {
-            "tryDelayMs": 250,
-            "prioritizeIPv6": false,
-            "interleave": 2,
-            "maxConcurrentTry": 4
-          }
-        },
-        "finalmask": {
-          "tcp": [
             {
-              "type": "fragment",
-              "settings": {
-                "packets": "1-1",
-                "length": "1",
-                "delay": "1"
-              }
+                "ip_cidr": "172.19.0.2",
+                "action": "hijack-dns"
+            },
+            {
+                "clash_mode": "Direct",
+                "outbound": "direct"
+            },
+            {
+                "clash_mode": "Global",
+                "outbound": "✅ Selector"
+            },
+            {
+                "action": "sniff"
+            },
+            {
+                "protocol": "dns",
+                "action": "hijack-dns"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "direct"
+            },
+            {
+                "network": "udp",
+                "action": "reject"
+            },
+            {
+                "rule_set": [
+                    "geosite-ir"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "rule_set": [
+                    "geoip-ir"
+                ],
+                "action": "route",
+                "outbound": "direct"
             }
-          ]
+        ],
+        "rule_set": [
+            {
+                "type": "remote",
+                "tag": "geosite-ir",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geoip-ir",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
+                "download_detour": "direct"
+            }
+        ],
+        "auto_detect_interface": true,
+        "final": "✅ Selector"
+    },
+    "ntp": {
+        "enabled": true,
+        "server": "time.cloudflare.com",
+        "server_port": 123,
+        "domain_resolver": "dns-direct",
+        "interval": "30m",
+        "write_to_system": false
+    },
+    "experimental": {
+        "cache_file": {
+            "enabled": true,
+            "store_fakeip": true
+        },
+        "clash_api": {
+            "external_controller": "127.0.0.1:9090",
+            "external_ui": "ui",
+            "default_mode": "Rule",
+            "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
+            "external_ui_download_detour": "direct"
         }
-      },
-      "tag": "proxy"
-    },
-    {
-      "protocol": "dns",
-      "settings": {
-        "rules": [
-          {
-            "action": "hijack"
-          }
-        ]
-      },
-      "tag": "dns-out"
-    },
-    {
-      "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIP"
-      },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {
-        "response": {
-          "type": "http"
-        }
-      },
-      "tag": "block"
     }
-  ],
-  "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": [
-      {
-        "inboundTag": [
-          "mixed-in"
-        ],
-        "port": 53,
-        "outboundTag": "dns-out",
-        "type": "field"
-      },
-      {
-        "inboundTag": [
-          "dns-in"
-        ],
-        "outboundTag": "dns-out",
-        "type": "field"
-      },
-      {
-        "inboundTag": [
-          "remote-dns"
-        ],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
-        "inboundTag": [
-          "dns"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "geoip:private"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "network": "udp",
-        "outboundTag": "block",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "geosite:category-ir"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "geoip:ir"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-      },
-      {
-        "network": "tcp",
-        "outboundTag": "proxy",
-        "type": "field"
-      }
-    ]
-  },
-  "policy": {
-    "levels": {
-      "0": {
-        "connIdle": 300,
-        "handshake": 4,
-        "uplinkOnly": 1,
-        "downlinkOnly": 1
-      }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
-  },
-  "stats": {}
 }
