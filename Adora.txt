@@ -1,105 +1,11 @@
-[
-    {
-        "remarks": "🌻 - Adora",
-        "version": {
-            "min": "26.2.6"
-        },
-        "log": {
-            "loglevel": "warning"
-        },
-        "dns": {
-            "hosts": {
-                "dns.adguard-dns.com": [
-                    "94.140.15.15",
-                    "94.140.14.14"
-                ]
-            },
-            "servers": [
-                {
-                    "address": "fakedns",
-                    "domains": [
-                        "geosite:category-ir",
-                        "full:bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
-                    ],
-                    "skipFallback": false
-                },
-                {
-                    "address": "https://dns.adguard-dns.com/dns-query",
-                    "tag": "remote-dns"
-                },
-                {
-                    "address": "8.8.8.8",
-                    "domains": [
-                        "geosite:category-ir"
-                    ],
-                    "expectIPs": [
-                        "geoip:ir"
-                    ],
-                    "skipFallback": true
-                },
-                {
-                    "address": "8.8.8.8",
-                    "domains": [
-                        "full:bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev"
-                    ],
-                    "skipFallback": true
-                }
-            ],
-            "queryStrategy": "UseIP",
-            "tag": "dns"
-        },
-        "inbounds": [
-            {
-                "listen": "0.0.0.0",
-                "port": 10808,
-                "protocol": "mixed",
-                "settings": {
-                    "auth": "noauth",
-                    "udp": true
-                },
-                "sniffing": {
-                    "destOverride": [
-                        "http",
-                        "tls",
-                        "fakedns"
-                    ],
-                    "enabled": true,
-                    "routeOnly": true
-                },
-                "tag": "mixed-in"
-            },
-            {
-                "listen": "0.0.0.0",
-                "port": 10853,
-                "protocol": "dokodemo-door",
-                "settings": {
-                    "address": "1.1.1.1",
-                    "network": "tcp,udp",
-                    "port": 53
-                },
-                "tag": "dns-in"
-            }
-        ],
-        "outbounds": [
-            {
-                "protocol": "vless",
-                "settings": {
-                    "vnext": [
-                        {
-                            "address": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-                            "port": 443,
-                            "users": [
-                                {
-                                    "id": "cde9e337-86b8-4c36-8c5b-be5a2916b724",
-                                    "encryption": "none"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                "streamSettings": {
-                    "network": "ws",
-                    "wsSettings": {
-                        "host": "bj6y0uk27nmyy0jzcyhjg38a7d7u0pak.ariya-hasanzadeh88.workers.dev",
-                        "path": "/eyJqdW5rIjoiM0d4TUJ1Y1JQIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTM0LjIwOS4xMzYuMTk3Il19?ed=2560"
-                    },
+vless://b421db23-2d4b-40d4-aece-849d21afd30e@www.speedtest.net:443?path=%2Fvl%2F7hqvPoBO4xioYrIzq0GqRXu%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=g1-2dct7y9dprc0vat8zbkbiuhu3.aria-hasanzade8.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=G1-2dCt7y9dPrc0VAt8zbkbIUhu3.aRiA-hASAnzADE8.WOrkErs.deV#%F0%9F%8C%BB%20-%20Adora
+vless://b421db23-2d4b-40d4-aece-849d21afd30e@104.21.4.15:443?path=%2Fvl%2FImxvR1ghEP7UHuJkjducmb7UjDSof%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=g1-2dct7y9dprc0vat8zbkbiuhu3.aria-hasanzade8.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=g1-2dCt7y9dPRC0VaT8ZbKBIuhu3.ariA-hAsAnZaDE8.WoRKeRS.dev#%F0%9F%8C%B9%20-%20Adora
+vless://b421db23-2d4b-40d4-aece-849d21afd30e@104.16.211.33:443?path=%2Fvl%2FNiEDtHsKZsiuAuKeb6lycoEmKBRTEdL%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=g1-2dct7y9dprc0vat8zbkbiuhu3.aria-hasanzade8.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=g1-2dcT7Y9dpRC0VAt8zBKbIUHU3.ArIA-hASanZade8.woRkErS.dEv#%E2%9C%A8%EF%B8%8F%20-%20Adora
+vless://b421db23-2d4b-40d4-aece-849d21afd30e@104.16.208.204:443?path=%2Fvl%2FwZFK0WaPk8i7SaEsHsh9cj29CRlU%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=g1-2dct7y9dprc0vat8zbkbiuhu3.aria-hasanzade8.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=G1-2dCt7Y9DpRc0vaT8zBkbiuhu3.arIa-HaSAnZaDe8.WOrKerS.dEv#%E2%98%80%EF%B8%8F%20-%20Adora
+vless://b421db23-2d4b-40d4-aece-849d21afd30e@104.16.196.164:443?path=%2Fvl%2FxO5ezURxv5a3u9zk0O6WqCxMrmMmTkT%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=g1-2dct7y9dprc0vat8zbkbiuhu3.aria-hasanzade8.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=G1-2dcT7y9dPrC0vAT8ZBKBIUHu3.ArIA-HAsaNzAde8.WorKeRS.dev#%F0%9F%8C%99%20-%20Adora
+vless://b421db23-2d4b-40d4-aece-849d21afd30e@104.16.249.251:443?path=%2Fvl%2FWleFDbZIORorLweXcj%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=g1-2dct7y9dprc0vat8zbkbiuhu3.aria-hasanzade8.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=G1-2dct7y9DpRc0VAt8zBkBiuHU3.ARIa-haSanzAdE8.woRkERS.deV#%F0%9F%92%AB%20-%20Adora
+vless://b421db23-2d4b-40d4-aece-849d21afd30e@104.21.34.140:443?path=%2Fvl%2FWmNSaDx58R9IVyTDulUSqrc%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=g1-2dct7y9dprc0vat8zbkbiuhu3.aria-hasanzade8.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=g1-2dct7y9dPrC0vAt8ZbKbIUHu3.ARiA-hASanzaDE8.WoRKeRs.DEv#%E2%9D%A4%EF%B8%8F%20-%20Adora
+vless://b421db23-2d4b-40d4-aece-849d21afd30e@104.17.105.215:443?path=%2Fvl%2FuUFd0W7Bx6gGUJSLSTb2xMy%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=g1-2dct7y9dprc0vat8zbkbiuhu3.aria-hasanzade8.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=G1-2dcT7y9Dprc0Vat8ZBkBIUhU3.ARiA-hasAnZade8.WoRKers.Dev#%F0%9F%AB%82%20-%20Adora
+vless://b421db23-2d4b-40d4-aece-849d21afd30e@104.17.22.127:443?path=%2Fvl%2FwhxODyzSQikjHRmNx7icU%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=g1-2dct7y9dprc0vat8zbkbiuhu3.aria-hasanzade8.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=g1-2DcT7Y9dPRc0VAT8ZBKbiUHU3.aria-haSAnZade8.WORkERS.Dev#%F0%9F%AB%A0%20-%20Adora
+vless://b421db23-2d4b-40d4-aece-849d21afd30e@104.16.192.160:443?path=%2Fvl%2FLU52fgYD9hxJC30HVKWd0lV8vV%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=g1-2dct7y9dprc0vat8zbkbiuhu3.aria-hasanzade8.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=g1-2DCT7Y9DpRc0vaT8zbKbIuhu3.ARIa-HASanZADE8.woRKErS.deV#%F0%9F%A5%B9%20-%20Adora
+vless://b421db23-2d4b-40d4-aece-849d21afd30e@104.17.5.47:443?path=%2Fvl%2Fr45eux67SWSfCUNyXVKskTQsShwgnt%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=g1-2dct7y9dprc0vat8zbkbiuhu3.aria-hasanzade8.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=G1-2DCT7Y9dpRC0VAt8zbkBIUhU3.ARIa-HAsanzadE8.wOrKeRS.DeV#%F0%9F%8E%82%20-%20Adora
